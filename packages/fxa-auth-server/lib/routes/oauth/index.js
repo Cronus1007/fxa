@@ -323,6 +323,9 @@ module.exports = (log, config, oauthdb, db, mailer, devices) => {
           // https://github.com/mozilla/fxa/pull/6581#issuecomment-702248031
           if (
             scopeSet.contains(OAUTH_SCOPE_OLD_SYNC) &&
+            // To hack around timing issues, only emit this event if it's an
+            // oldsync scope, but not a profile scope. #6578
+            !scopeSet.contains('profile') &&
             config.oauth.oldSyncClientIds.includes(request.payload.client_id)
           ) {
             await request.emitMetricsEvent('account.signed', {
