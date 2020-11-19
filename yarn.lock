@@ -3652,6 +3652,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nestjs/passport@npm:^7.1.3":
+  version: 7.1.3
+  resolution: "@nestjs/passport@npm:7.1.3"
+  peerDependencies:
+    "@nestjs/common": ^6.0.0 || ^7.0.0
+    passport: ^0.4.0
+  checksum: bdf0d2ec91767287b018df42455f1d6c9b24e198fd10315d12b56076582bd998555a542545976563b4dfdc2b903370943626a7baa82dbd63eea6f482292ddafd
+  languageName: node
+  linkType: hard
+
 "@nestjs/platform-express@npm:^7.4.4":
   version: 7.4.4
   resolution: "@nestjs/platform-express@npm:7.4.4"
@@ -4205,7 +4215,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:^5.17.0, @sentry/node@npm:^5.21.1, @sentry/node@npm:^5.23.0":
+"@sentry/node@npm:^5.17.0, @sentry/node@npm:^5.23.0":
   version: 5.23.0
   resolution: "@sentry/node@npm:5.23.0"
   dependencies:
@@ -5562,7 +5572,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai@npm:*, @types/chai@npm:^4.2.11, @types/chai@npm:^4.2.12, @types/chai@npm:^4.2.4":
+"@types/chai@npm:*, @types/chai@npm:^4.2.11, @types/chai@npm:^4.2.4":
   version: 4.2.12
   resolution: "@types/chai@npm:4.2.12"
   checksum: 5dc6d541d748dbf95e0f0b1a39177e0bd8b37f143307cce6a93baf3d6cb44fead65fddb582ce9397aa14b1a76117e5d398fa322f92182074b7d53e5d2f669a19
@@ -6346,6 +6356,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/passport-http-bearer@npm:^1":
+  version: 1.0.36
+  resolution: "@types/passport-http-bearer@npm:1.0.36"
+  dependencies:
+    "@types/express": "*"
+    "@types/koa": "*"
+    "@types/passport": "*"
+  checksum: 67fe1359eed4877ed5c69b58a75d59bbc1355dbd9663858e1c8fcc5c6ba5d7983137d06f4ebb93c2defc08e34ffc6d5a82c7523e42cf2e8f2f460341f9d8aea2
+  languageName: node
+  linkType: hard
+
 "@types/passport-jwt@npm:^3.0.3":
   version: 3.0.3
   resolution: "@types/passport-jwt@npm:3.0.3"
@@ -6619,13 +6640,6 @@ __metadata:
   version: 1.1.2
   resolution: "@types/safe-regex@npm:1.1.2"
   checksum: 93bc6baeace1f931907b4623e04d92900b791d40d2ba43854c1e012f5cfacca2b09c37c8901a2a3abf13c22d4ad1a1f21c421eef460373ce4ebca1c15c247584
-  languageName: node
-  linkType: hard
-
-"@types/semver@npm:^6.0.1":
-  version: 6.2.1
-  resolution: "@types/semver@npm:6.2.1"
-  checksum: d15c24fc360f9d4a353a2d24bb7304a3440bea0387a158ff9fac78b777a63ac491c72c9cc0f7c7caeabc857359c5aa3b08978241e479af10fe8072cd3af6729e
   languageName: node
   linkType: hard
 
@@ -12178,7 +12192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"class-validator@npm:>=0.9.1, class-validator@npm:^0.12.2":
+"class-validator@npm:^0.12.2":
   version: 0.12.2
   resolution: "class-validator@npm:0.12.2"
   dependencies:
@@ -18129,20 +18143,24 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "fxa-graphql-api@workspace:packages/fxa-graphql-api"
   dependencies:
-    "@sentry/integrations": ^5.21.1
-    "@sentry/node": ^5.21.1
-    "@types/chai": ^4.2.12
+    "@nestjs/common": ^7.4.4
+    "@nestjs/config": ^0.5.0
+    "@nestjs/core": ^7.4.4
+    "@nestjs/graphql": ^7.7.0
+    "@nestjs/mapped-types": ^0.1.1
+    "@nestjs/passport": ^7.1.3
+    "@nestjs/platform-express": ^7.4.4
+    "@sentry/integrations": ^5.23.0
+    "@sentry/node": ^5.23.0
     "@types/chance": ^1.1.0
     "@types/convict": ^5.2.1
-    "@types/eslint": 7.2.0
     "@types/get-stream": 3.0.2
     "@types/graphql": ^14.5.0
     "@types/graphql-upload": 8.0.3
     "@types/ioredis": ^4.17.3
-    "@types/mocha": ^8.0.2
     "@types/node": ^14.14.5
-    "@types/proxyquire": ^1.3.28
-    "@types/sinon": 9.0.8
+    "@types/passport": ^1
+    "@types/passport-http-bearer": ^1
     "@types/superagent": 4.1.10
     "@types/supertest": ^2.0.10
     "@types/yargs": ^15.0.5
@@ -18152,37 +18170,44 @@ fsevents@^1.2.7:
     audit-filter: ^0.5.0
     chai: ^4.2.0
     chance: ^1.1.6
+    class-transformer: ^0.3.1
+    class-validator: ^0.12.2
     commander: ^6.0.0
     convict: ^6.0.0
     convict-format-with-moment: ^6.0.0
     convict-format-with-validator: ^6.0.0
     eslint: ^7.6.0
+    express: ^4.17.1
     fxa-auth-client: "workspace:*"
     fxa-shared: "workspace:*"
     get-stream: ^6.0.0
     graphql: ^14.6.0
     graphql-parse-resolve-info: ^4.9.0
     graphql-query-complexity: ^0.7.1
+    graphql-tools: ^7.0.1
     graphql-upload: ^11.0.0
+    helmet: ^4.1.1
     ioredis: ^4.17.3
+    jest: 26.6.3
     knex: ^0.21.12
     mocha: ^8.1.1
     mozlog: ^3.0.1
     mysql: ^2.18.1
     nock: ^13.0.4
     objection: ^2.2.2
+    passport: ^0.4.1
+    passport-http-bearer: ^1.0.1
     pm2: ^4.4.1
     prettier: ^2.0.5
     proxyquire: ^2.1.3
     reflect-metadata: ^0.1.13
-    sinon: ^9.0.3
+    rimraf: ^3.0.2
+    rxjs: ^6.5.5
     superagent: ^6.0.0
     supertest: ^4.0.2
-    ts-node: ^8.10.2
-    ts-sinon: ^2.0.1
+    ts-jest: 26.4.3
+    ts-node: ^8.6.2
     tslib: 2.0.1
-    type-graphql: ^0.17.6
-    typedi: ^0.8.0
     typescript: 3.9.7
     yargs: ^15.4.1
   languageName: unknown
@@ -19335,17 +19360,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"graphql-query-complexity@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "graphql-query-complexity@npm:0.3.0"
-  dependencies:
-    lodash.get: ^4.4.2
-  peerDependencies:
-    graphql: ^0.13.0 || ^14.0.0
-  checksum: 3c905b4cdccbac1aed818a1701b18a88d5a4a41ce034187d5015fb96ee99ac6d03d660be474cee80db866414d54a70a6d6a15497d46729fc5be3731a306520f5
-  languageName: node
-  linkType: hard
-
 "graphql-query-complexity@npm:^0.7.1":
   version: 0.7.1
   resolution: "graphql-query-complexity@npm:0.7.1"
@@ -19357,7 +19371,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"graphql-subscriptions@npm:^1.0.0, graphql-subscriptions@npm:^1.1.0":
+"graphql-subscriptions@npm:^1.0.0":
   version: 1.1.0
   resolution: "graphql-subscriptions@npm:1.1.0"
   dependencies:
@@ -28291,6 +28305,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"passport-http-bearer@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "passport-http-bearer@npm:1.0.1"
+  dependencies:
+    passport-strategy: 1.x.x
+  checksum: a26f84c09cecdbe0c4f10f5ec1b59aca3ce7513433e7853a86f809d4617483f8e9a3588d17307966a329ce43eb5b70262bf7f5b679c7deeb21f12b1f0b0c3fa3
+  languageName: node
+  linkType: hard
+
 "passport-jwt@npm:^4.0.0":
   version: 4.0.0
   resolution: "passport-jwt@npm:4.0.0"
@@ -36340,26 +36363,6 @@ resolve@~1.11.1:
   version: 0.8.1
   resolution: "type-fest@npm:0.8.1"
   checksum: f8c4b4249f52e8bea7a4fc55b3653c96c2d547240e4c772e001d02b7cc38b8c3eb493ab9fbe985a76a203cd1aa7044776b728a71ba12bf36e7131f989597885b
-  languageName: node
-  linkType: hard
-
-"type-graphql@npm:^0.17.6":
-  version: 0.17.6
-  resolution: "type-graphql@npm:0.17.6"
-  dependencies:
-    "@types/glob": ^7.1.1
-    "@types/node": "*"
-    "@types/semver": ^6.0.1
-    class-validator: ">=0.9.1"
-    glob: ^7.1.4
-    graphql-query-complexity: ^0.3.0
-    graphql-subscriptions: ^1.1.0
-    semver: ^6.2.0
-    tslib: ^1.10.0
-  peerDependencies:
-    "@types/graphql": ^14.0.7
-    graphql: ^14.1.1
-  checksum: 006529625efb4809f37927ac422bb1da6602f80db23a7ad88eac9088df50e292281003b5782c649e6cfed77f179b8e1a73a733b7106fb75c9276d53f2728389d
   languageName: node
   linkType: hard
 
