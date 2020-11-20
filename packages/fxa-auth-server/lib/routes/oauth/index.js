@@ -317,21 +317,28 @@ module.exports = (log, config, oauthdb, db, mailer, devices) => {
           // (ref: https://bugzilla.mozilla.org/show_bug.cgi?id=1632635), where
           // we need the 'service' event property to distinguish between sync
           // and browser.
-          //
-          // The service for this event gets special-cased to 'sync' so that it
-          // matches its pre-oauth `/certificate/sign` event.  ref:
-          // https://github.com/mozilla/fxa/pull/6581#issuecomment-702248031
           if (
             scopeSet.contains(OAUTH_SCOPE_OLD_SYNC) &&
             // To hack around timing issues, only emit this event if it's an
             // oldsync scope, but not a profile scope. #6578
-            !scopeSet.contains('profile') &&
-            config.oauth.oldSyncClientIds.includes(request.payload.client_id)
+            !scopeSet.contains('profile')
           ) {
+            // For desktop, the 'service' parameter for this event gets
+            // special-cased to 'sync' so that it matches its pre-oauth
+            // `/certificate/sign` event.
+            // ref: https://github.com/mozilla/fxa/pull/6581#issuecomment-702248031
+            // Otherwise, for mobile browsers, just use the existing client ID
+            // to service name mapping used in the metrics code (see the
+            // OAUTH_CLIENT_IDS config value). #5143
+            const service = config.oauth.oldSyncClientIds.includes(
+              request.payload.client_id
+            )
+              ? 'sync'
+              : request.payload.client_id;
             await request.emitMetricsEvent('account.signed', {
               uid: uid,
               device_id: sessionToken.deviceId,
-              service: 'sync',
+              service,
             });
           }
         } catch (ex) {}
